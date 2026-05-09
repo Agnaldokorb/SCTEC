@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body style="background-color: aqua;">
+    <button id="interuptor" style="background-color: red;">Click me</button>
+    <script>
+        let botao = document.getElementById("interuptor");
+        let interuptor = false;
+
+        botao.onclick = () => {
+            if (interuptor) {
+                document.body.style.backgroundColor = "aqua";
+                botao.style.backgroundColor = "red";
+                interuptor = false;
+            } else {
+                document.body.style.backgroundColor = "yellow";
+                botao.style.backgroundColor = "green";
+                interuptor = true;
+            }wi
+        }
+    </script>
+</body>
+</html>

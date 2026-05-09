@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let user = {
+            name: "John",
+            age: 30,
+            endereço: {
+                rua: "Rua A",
+                numero: 123,
+                cidade: "São Paulo",
+                estado: {
+                    nome: "São Paulo",
+                    sigla: "SP"
+                }
+            }
+        };
+        
+        for (let key in user) {
+            
+            alert(key + ": " + user[key]);
+            }
+    </script>
+</body>
+</html>

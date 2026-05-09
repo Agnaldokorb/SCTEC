@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquário de Cores</title>
+</head>
+<body>
+    <button id="btnAdicionar">Adicionar Cor</button>
+    <button id="btnLimpar">Limpar Cores</button>
+    <script>
+        const btnAdicionar = document.getElementById('btnAdicionar');
+        const btnLimpar = document.getElementById('btnLimpar');
+
+        btnAdicionar.addEventListener('click', () => {
+            const cor = prompt('Digite uma cor (em inglês ou hexadecimal):');
+            if (cor) {
+                const divCor = document.createElement('div');
+                divCor.style.width = '100px';
+                divCor.style.height = '100px';
+                divCor.style.backgroundColor = cor;
+                divCor.style.display = 'inline-block';
+                divCor.style.margin = '5px';
+                document.body.appendChild(divCor);
+            }
+        });
+
+        btnLimpar.addEventListener('click', () => {
+            const cores = document.querySelectorAll('div');
+            cores.forEach(cor => cor.remove());
+        });
+    </script>
+</body>
+</html>

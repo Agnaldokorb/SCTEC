@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 2</title>
+</head>
+<body>
+    <script>
+      //precoBase, categotia, temDesconto
+      //switch categoria: Eletronico: +15% sobre o preçobase, Vestuario: +5% sobre o precoBase, Alimento: 0% sobre o precoBase
+      //se temDesconto: desconto de -10 sobre o precoBase
+      //calcular o precoFinal e exibir o resultado
+
+        let precoBase = 100;
+        let categoria = "Vestuario";
+        let temDesconto = true;
+        let mensagem = "";
+
+        switch (categoria) {
+            case "Eletronico":
+                precoBase += precoBase * 0.15;
+                break;
+            case "Vestuario":
+                precoBase += precoBase * 0.05;
+                break;
+            case "Alimento":
+                break;
+            default:
+                alert("Categoria inválida");
+        }
+
+        if (temDesconto) {
+            precoBase -= 10;
+        }
+        mensagem = `O preço final é: R$ ${precoBase.toFixed(2)}`;
+        alert(mensagem);
+    </script>
+</body>
+</html>

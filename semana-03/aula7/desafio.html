@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //temp, chovendo, escala
+        //se F converte para C (C = (F - 32) / 1.8)
+        //se chovendo leva guarda-chuva
+        //se não, se temp abaixo de 15 leva casaco, se entre 15 e 25: clima agradavel, se acima de 25 leva roupa leve
+
+        let temp = 14;
+        let chovendo = false;
+        let escala = "C";
+        let mensagem = "";
+
+        switch (escala) {
+            case "F":
+                temp = (temp - 32) / 1.8;
+                break;
+            case "C":
+                break;
+            default:
+                alert("Escala inválida");
+        }
+
+        if (chovendo) {
+            mensagem = "Leve um guarda-chuva";
+        } else {
+            if (temp < 15) {
+                mensagem = "Leve um casaco";
+            } else if (temp >= 15 && temp <= 25) {
+                mensagem = "Clima agradável";
+            } else {
+                mensagem = "Leve roupas leves";
+            }
+        }
+        alert(mensagem);
+    </script>
+</body>
+
+</html>

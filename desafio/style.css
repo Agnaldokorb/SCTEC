@@ -1,0 +1,347 @@
+<style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cyan: #6ee7f7;
+            --purple: #a78bfa;
+            --pink: #f472b6;
+            --bg: #050510;
+            --card: rgba(255, 255, 255, 0.04);
+            --border: rgba(110, 231, 247, 0.18);
+        }
+
+        body {
+            background: var(--bg);
+            color: #e0e0ff;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── Three.js canvas background ── */
+        #bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ── Main layout ── */
+        #ui {
+            position: relative;
+            z-index: 1;
+            padding: 28px 20px 40px;
+        }
+
+        /* ── Header ── */
+        .header {
+            text-align: center;
+            margin-bottom: 36px;
+            opacity: 0;
+        }
+
+        .header h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            letter-spacing: 0.12em;
+            background: linear-gradient(90deg, var(--cyan), var(--purple), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #6b7280;
+            letter-spacing: 0.06em;
+        }
+
+        /* ── Grid ── */
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 22px;
+            max-width: 1360px;
+            margin: 0 auto;
+        }
+
+        /* ── Cards ── */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 20px;
+            backdrop-filter: blur(14px);
+            opacity: 0;
+            transform: translateY(36px);
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-title h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--cyan);
+        }
+
+        .badge {
+            margin-left: auto;
+            background: rgba(110, 231, 247, 0.12);
+            border: 1px solid rgba(110, 231, 247, 0.3);
+            border-radius: 20px;
+            padding: 2px 9px;
+            font-size: 0.7rem;
+            color: var(--cyan);
+            white-space: nowrap;
+        }
+
+        .badge.purple {
+            background: rgba(167, 139, 250, 0.12);
+            border-color: rgba(167, 139, 250, 0.3);
+            color: var(--purple);
+        }
+
+        .badge.pink {
+            background: rgba(244, 114, 182, 0.12);
+            border-color: rgba(244, 114, 182, 0.3);
+            color: var(--pink);
+        }
+
+        /* ── Camera card ── */
+        .video-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #overlay {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #cam-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: var(--purple);
+        }
+
+        .spinner {
+            width: 14px;
+            height: 14px;
+            border: 2px solid var(--purple);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.75s linear infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spinner.hidden {
+            display: none;
+        }
+
+        #objects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+            min-height: 28px;
+        }
+
+        .obj-tag {
+            background: rgba(167, 139, 250, 0.18);
+            border: 1px solid var(--purple);
+            border-radius: 20px;
+            padding: 3px 11px;
+            font-size: 0.78rem;
+            color: #c4b5fd;
+        }
+
+        /* ── Audio card ── */
+        #audio-viz {
+            display: block;
+            width: 100%;
+            height: 110px;
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 8px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-top: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            color: #6b7280;
+        }
+
+        .stat-val {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--pink);
+        }
+
+        /* ── Sensor card ── */
+        .sensor-group {
+            margin-bottom: 16px;
+        }
+
+        .sensor-group h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--purple);
+            margin-bottom: 8px;
+        }
+
+        .sensor-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .sensor-key {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .sensor-value {
+            font-size: 0.85rem;
+            font-family: monospace;
+            color: var(--pink);
+        }
+
+        /* ── Gyro visual ── */
+        .gyro-ball-wrap {
+            width: 90px;
+            height: 90px;
+            border: 2px solid rgba(244, 114, 182, 0.3);
+            border-radius: 50%;
+            margin: 8px auto 12px;
+            position: relative;
+            background: radial-gradient(circle, rgba(244, 114, 182, 0.06), transparent 70%);
+        }
+
+        #gyro-dot {
+            width: 14px;
+            height: 14px;
+            background: var(--pink);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 8px var(--pink);
+            transition: top 0.08s linear, left 0.08s linear;
+        }
+
+        /* ── Buttons ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            border: none;
+            border-radius: 8px;
+            color: #050510;
+            font-weight: 700;
+            font-size: 0.82rem;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: opacity 0.2s, transform 0.1s;
+            letter-spacing: 0.03em;
+        }
+
+        .btn:hover {
+            opacity: 0.88;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn:disabled {
+            opacity: 0.35;
+            cursor: default;
+        }
+
+        .btn.pink {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+        }
+
+        /* ── Pulse dot (active indicator) ── */
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+            animation: pulse 1.4s ease-out infinite;
+            display: none;
+        }
+
+        .pulse-dot.active {
+            display: inline-block;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+            }
+
+            70% {
+                box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            }
+        }
+
+        /* ── Detection count badge ── */
+        #det-count {
+            margin-left: auto;
+            font-size: 0.75rem;
+            color: var(--cyan);
+            font-family: monospace;
+        }
+    </style>

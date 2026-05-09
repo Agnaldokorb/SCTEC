@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 3</title>
+</head>
+<body>
+    <script>
+        //idade, cargo (ADMIM, EDITOR, VISITANTE), treinamentoOk
+        //switch cargo: admim: se idade < 18 so acessa se treinamentoOk == true ou idade >= 18 , editor: se idade > 25 ou se treinamentoOk == true, visitante: acesso sempre negado
+        //exibir mensagem ex.: "Acesso permitido "editor ou admim", Acesso negado ou treinamento pendente"
+
+        let idade = 26;
+        let cargo = "VISITANTE";
+        let treinamentoOk = false;
+        let mensagem = "";
+
+        switch (cargo) {
+            case "ADMIM":
+                if (idade < 18) {
+                    mensagem = treinamentoOk ? "Acesso permitido para ADMIM" : "Treinamento pendente para ADMIM";
+                } else {
+                    mensagem = "Acesso permitido para ADMIM";
+                }
+                break;
+            case "EDITOR":
+                if (idade > 25 || treinamentoOk) {
+                    mensagem = "Acesso permitido para EDITOR";
+                } else {
+                    mensagem = "Acesso negado para EDITOR";
+                }
+                break;
+            case "VISITANTE":
+                mensagem = "Acesso negado para VISITANTE";
+                break;
+            default:
+                alert("Cargo inválido");
+        }
+        alert(mensagem);
+    </script>
+</body>
+</html>

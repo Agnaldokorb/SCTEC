@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório de Percepção AI</title>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
+    <!-- COCO-SSD (object detection) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js"></script>
+    <!-- CSS (style) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <canvas id="bg"></canvas>
+
+    <div id="ui">
+        <header class="header">
+            <h1>Laboratório de Percepção AI</h1>
+            <p>câmera · microfone · geolocalização · giroscópio &nbsp;|&nbsp; TensorFlow.js · Three.js · GSAP</p>
+        </header>
+
+        <div id="grid">
+
+            <!-- ════ CARD 1 – CÂMERA + IA ════ -->
+            <div class="card" id="cam-card">
+                <div class="card-title">
+                    <h2>Câmera + Detecção IA</h2>
+                    <span class="badge">COCO-SSD · TF.js</span>
+                </div>
+
+                <div class="video-wrap">
+                    <video id="video" autoplay muted playsinline></video>
+                    <canvas id="overlay"></canvas>
+                </div>
+
+                <div id="cam-status">
+                    <div class="spinner" id="spinner"></div>
+                    <span id="status-text">Iniciando câmera e carregando modelo...</span>
+                    <span id="det-count" style="display:none"></span>
+                    <div class="pulse-dot" id="cam-pulse"></div>
+                </div>
+
+                <div id="objects"></div>
+            </div>
+
+            <!-- ════ CARD 2 – MICROFONE ════ -->
+            <div class="card" id="audio-card">
+                <div class="card-title">
+                    <h2>Microfone</h2>
+                    <span class="badge purple">Web Audio API</span>
+                </div>
+
+                <canvas id="audio-viz"></canvas>
+
+                <div class="stat-row">
+                    <span class="stat-label">Volume (RMS)</span>
+                    <span class="stat-val" id="vol-val">—</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Frequência dominante</span>
+                    <span class="stat-val" id="freq-val">—</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Nota musical</span>
+                    <span class="stat-val" id="note-val">—</span>
+                </div>
+
+                <button class="btn pink" id="mic-btn">Ativar Microfone</button>
+            </div>
+
+            <!-- ════ CARD 3 – GEOLOCALIZAÇÃO + GIROSCÓPIO ════ -->
+            <div class="card" id="sensor-card">
+                <div class="card-title">
+                    <h2>Sensores</h2>
+                    <span class="badge pink">Geo · Gyro</span>
+                </div>
+
+                <div class="sensor-group">
+                    <h3>Geolocalização</h3>
+                    <div class="sensor-row">
+                        <span class="sensor-key">Latitude</span>
+                        <span class="sensor-value" id="lat-val">aguardando...</span>
+                    </div>
+                    <div class="sensor-row">
+                        <span class="sensor-key">Longitude</span>
+                        <span class="sensor-value" id="lon-val">aguardando...</span>
+                    </div>
+                    <div class="sensor-row">
+                        <span class="sensor-key">Precisão</span>
+                        <span class="sensor-value" id="acc-val">—</span>
+                    </div>
+                    <div class="sensor-row">
+                        <span class="sensor-key">Velocidade</span>
+                        <span class="sensor-value" id="spd-val">—</span>
+                    </div>
+                </div>
+
+                <div class="sensor-group">
+                    <h3>Giroscópio / Orientação</h3>
+                    <div class="gyro-ball-wrap">
+                        <div id="gyro-dot"></div>
+                    </div>
+                    <div class="sensor-row">
+                        <span class="sensor-key">Alpha (yaw)</span>
+                        <span class="sensor-value" id="alpha-val">—</span>
+                    </div>
+                    <div class="sensor-row">
+                        <span class="sensor-key">Beta (pitch)</span>
+                        <span class="sensor-value" id="beta-val">—</span>
+                    </div>
+                    <div class="sensor-row">
+                        <span class="sensor-key">Gamma (roll)</span>
+                        <span class="sensor-value" id="gamma-val">—</span>
+                    </div>
+                    <button class="btn" id="gyro-btn">Ativar Giroscópio</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
