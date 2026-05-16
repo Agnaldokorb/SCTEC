@@ -1,0 +1,48 @@
+# Curso Front-End (SCTEC + LAB365 + SENAI SC)
+
+Este repositório reúne os exercícios, aulas e desafios do curso de **Front-End [React]** desenvolvido pela **SCTEC** em parceria com o **LAB365** e o **SENAI SC**.
+
+Professor: @eduardoworrel
+
+## Sobre este repositório
+
+- Todo o conteúdo aqui foi feito com **HTML, CSS e JavaScript puro**.
+- **Nao** há uso de **Node.js**, **React** ou ferramentas de build.
+- O foco é praticar fundamentos de front-end com arquivos simples e diretos.
+
+## Estrutura
+
+O repositório está organizado por semanas e aulas, por exemplo:
+
+- `semana-01/`
+  - `aulax`
+- `semana-02/`
+  - `aulax`
+- `semana-03/`
+  - `aulax`
+- `semana-04/`
+  - `aulax`
+- `semana-05/`
+  - `aulax`
+
+Dentro de cada pasta você encontrará arquivos `.html`, `.css` e `.js`.
+
+## Como executar
+
+Você pode executar os arquivos de duas formas:
+
+### 1) Pelo navegador (forma mais simples)
+
+1. Abra a pasta do projeto.
+2. Entre na aula/desafio desejado.
+3. Dê duplo clique no arquivo `.html` (ex.: `index.html` ou `desafio1.html`).
+4. O arquivo abrirá no navegador padrão.
+5. Ou instale a extenção do live Server depois clik sobre a pasta html com o botão direito e clik sobre `OPEN WITH LIVE SERVER`
+
+### 2) Pelo CONSOLE DO NAVEGADOR
+
+Mesmo sem Node.js, você pode copiar o codigo do arquivo .js e colar no console do navegador.
+
+## Observação
+
+Este repositório é voltado para estudo e prática dos fundamentos de desenvolvimento web front-end.
