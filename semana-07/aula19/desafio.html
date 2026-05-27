@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio HTML - CSS</title>
+</head>
+<body>
+    <header>
+        <nav id="menu">
+            <a class="item" href="#">Home</a>
+            <a class="item" href="#">Sobre</a>
+            <a class="item" href="#">Contato</a>
+
+        </nav>
+    </header>
+    <main id="main">
+        
+
+        <div id="content">
+            <h1 id="h1">Desafio HTML - CSS</h1>
+            <p id="p">Este é um desafio para praticar HTML e CSS.</p>
+        </div>
+
+        <div id="img">
+            <img src="https://www.locaweb.com.br/blog/wp-content/uploads/2023/01/principais-tendencias-em-desenvolvimento.png" alt="imagem">
+        </div>
+
+        
+    </main>
+
+    <footer id="footer">
+            <p>© 2026 Desafio HTML - CSS. Todos os direitos reservados.</p>
+    </footer>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, lightgreen, lightblue);
+            color: rgb(24, 128, 50);
+        }
+        #menu {
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            
+        }
+        .item{
+            text-decoration: none;
+            color: black;
+
+        }
+        #h1 {
+            font-size: 3em;
+            font-weight: bold;
+            margin-left: 50px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        #p {
+            font-size: 1.5em;
+            margin-left: 50px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        #img {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        #footer {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        
+    </style>
+</body>
+</html>
