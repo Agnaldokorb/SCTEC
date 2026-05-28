@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Box Model</title>
+  </head>
+  <body>
+    <div class="panel">
+      <div class="border-box">
+        <div class="padding-box">
+          <div class="content-box">380 × 380</div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }   
+    .panel {
+        width: 520px;
+        height: 520px;
+        background-color: #e7ae10;
+        border: 2px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .border-box {
+        width: 480px;
+        height: 480px;
+        background-color: yellow;
+        border: 2px solid black;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .padding-box {
+        width: 400px;
+        height: 400px;
+        background-color: green;
+        border: 2px solid black;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content-box {
+        width: 380px;
+        height: 380px;
+        background-color: blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    </style>
+  </body>
+</html>

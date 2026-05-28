@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML - CSS</title>
+</head>
+<body>
+    <main class="pai">
+        <h1>Hello Wold!</h1>
+        <h1>Olá mundo1</h1>
+        <img src="https://www.locaweb.com.br/blog/wp-content/uploads/2023/01/principais-tendencias-em-desenvolvimento.png" alt="imagem">
+    </main>
+
+    <style>
+        body{
+            background-color: aqua;
+            height: 3000px;
+            @media h1 {
+                width: 300;
+            }
+        }
+        h1{
+            display: flex;
+            position: relative;
+            
+        }
+        img{
+            width: 650px;
+        }
+
+        @media (max-width: 400px) {
+            img {
+                width: 300px;
+            }
+            body{
+                background-color: blueviolet;
+            }
+            h1{
+                color: brown;
+            }
+        }
+
+        
+    </style>
+</body>
+</html>

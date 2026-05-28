@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Praticando 01</title>
+    <link rel="stylesheet" href="praticando1.css" />
+  </head>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <body>
+    <header>
+      <div class="aplicacao">
+        <aside class="menu">
+          <div class="topo">
+            <div class="usuario">
+              <div class="avatar">
+                <img
+                  src="https://media.istockphoto.com/id/1142192548/pt/vetorial/man-avatar-profile-male-face-silhouette-or-icon-isolated-on-white-background-vector.jpg?s=1024x1024&w=is&k=20&c=6dUj_ypCmIs-aaKoMRaLPT4qj_kDIiR6FL1igrYN09U="
+                  alt="avatar usuario"
+                />
+              </div>
+              <div class="usuario-info">
+                <strong>Nome Sobrenome</strong>
+                <small>email@email.com</small>
+              </div>
+            </div>
+          </div>
+          <nav class="navegacao">
+            <a href="#">📊 Dashboard</a>
+            <a href="#">📁 Projetos</a>
+            <a href="#">⚙ Configurações</a>
+            <a href="#">👤 Perfil</a>
+            <a href="#">📈 Relatórios</a>
+            <a href="#">💬 Ajuda</a>
+          </nav>
+          <div class="linha"></div>
+          <footer class="footer-menu">
+            <strong>praticando 01</strong>
+          </footer>
+        </aside>
+
+        <main class="main">
+          <header class="titulo">
+            <h3>Dashboard Principal</h3>
+            <button>☰</button>
+          </header>
+
+          <section class="cards-geral">
+            <div class="cards">
+              <div class="card">
+                <div class="card-titulo">
+                  <h5>Vendas do mês</h5>
+                  <div class="avatar-card">📊</div>
+                </div>
+                <div class="result">
+                  <span>856</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-titulo">
+                  <h5>Faturamento mês</h5>
+                  <div class="avatar-card">💵</div>
+                </div>
+                <div class="result">
+                  <span>R$6.890,30</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-titulo">
+                  <h5>Vendas no ano</h5>
+                  <div class="avatar-card">📊</div>
+                </div>
+                <div class="result">
+                  <span>3504</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-titulo">
+                  <h5>Faturamento ano</h5>
+                  <div class="avatar-card">💰</div>
+                </div>
+                <div class="result">
+                  <span>R$86.890,30</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="dashboard">
+            <div class="dashboard-1">
+              <div class="card-dashboard grande">
+                <canvas id="barChart"></canvas>
+              </div>
+
+              <div class="card-dashboard medio">
+                <canvas id="lineChart"></canvas>
+              </div>
+            </div>
+            <div class="dashboard-2">
+              <div class="card-dashboard pequeno">
+                <canvas id="donutChart"></canvas>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </header>
+
+    <script src="praticando1.js"></script>
+  </body>
+</html>

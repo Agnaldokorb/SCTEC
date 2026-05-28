@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafio</title>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="lateral">
+        <div class="topo">
+          <div class="icons">
+            <h2>☰ NovoGPT</h2>
+            <h2>📝</h2>
+          </div>
+          <button>+ Novo GPT</button>
+        </div>
+
+        <div class="historico">
+          <p>Hoje</p>
+          <span>💬Explicação sobre CSS Flexbox</span>
+          <span>💬Melhores práticas de HTML</span>
+          <span>💬Como funciona o JavaScript?</span>
+          <span>💬Dúvida sobre responsabilidade</span>
+        </div>
+
+        <div class="historico">
+          <p>Ontem</p>
+          <span>💬Grid layout guia completo</span>
+          <span>💬Animação com CSS</span>
+          <span>💬Posicionamento em CSS</span>
+        </div>
+        <hr />
+        <div class="usuario">
+          <div class="avatar"></div>
+
+          <div class="usuario-info">
+            <strong>Agnaldo korb</strong>
+            <small>Plano Plus</small>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="header">
+          <h3>NovoGPT V8</h3>
+          <button>?</button>
+        </header>
+
+        <section class="conteudo">
+          <div class="conversacao">
+            <div class="loading">
+              <span>.</span>
+              <span>.</span>
+              <span>.</span>
+            </div>
+          </div>
+          <h1>Como posso ajudar?</h1>
+
+          <div class="cards">
+            <div class="card">
+              Explique o que é CSS Grid
+              <hr class="linha" />
+              <hr class="linha pequena" />
+            </div>
+            <div class="card">
+              Escreva um exemplo de grid
+              <hr class="linha" />
+              <hr class="linha pequena" />
+            </div>
+            <div class="card">
+              Dê ideias de projetos com HTML
+              <hr class="linha" />
+              <hr class="linha pequena" />
+            </div>
+            <div class="card">
+              Melhore este código class
+              <hr class="linha" />
+              <hr class="linha pequena" />
+            </div>
+          </div>
+        </section>
+
+        <form class="message-texto">
+          <input
+            type="text"
+            placeholder="Envie uma mensagem para o ChatGPT..."
+          />
+          <button>↑</button>
+        </form>
+      </main>
+    </div>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+      .app {
+        min-height: 100vh;
+        display: flex;
+        background: #f7f7f8;
+      }
+      .lateral {
+        width: 260px;
+        background: white;
+        border-right: 1px solid #a0a5ad;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .topo {
+        margin-bottom: 16px;
+      }
+      .icons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .topo button {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        background: #ddd;
+        margin-top: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+      }
+      .historico {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .historico p {
+        font-size: 12px;
+        color: #777;
+      }
+      .historico span {
+        font-size: 14px;
+        color: #333;
+      }
+      .linha {
+        border: none;
+        height: 6px;
+        width: 90px;
+
+        background: #e5e5e5;
+        border-radius: 999px;
+
+        margin-top: 8px;
+      }
+
+      .pequena {
+        width: 70px;
+      }
+      .usuario {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .usuario-info{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .usuario strong{
+        font-size: 20px;
+      }
+      .usuario small {
+        color: #777;
+        font-size: 14px;
+      }
+      .avatar{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #e5dddd;
+      }
+      .conversacao {
+        display: flex;
+        border-radius: 50%;
+        background-color: #eee6e6;
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+      }
+      main {
+        flex: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        font-weight: bold;
+      }
+      .header button {
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 20px;
+      }
+      .conteudo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .conteudo h1 {
+        font-size: 26px;
+        margin-bottom: 32px;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        max-width: 800px;
+      }
+      .card {
+        width: 160px;
+        min-height: 110px;
+        padding: 16px;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        background: white;
+        font-size: 14px;
+      }
+      .message-texto {
+        margin: 0 auto 24px;
+        width: 90%;
+        max-width: 900px;
+        height: 64px;
+        border: 2px solid #ddd;
+        border-radius: 18px;
+        background: white;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+      }
+      .message-texto input {
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 14px;
+      }
+      .message-texto button {
+        width: 36px;
+        height: 36px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .loading {
+        display: flex;
+        gap: 5px;
+      }
+
+      .loading span {
+        font-size: 40px;
+        animation: bounce 0.6s infinite alternate;
+      }
+
+      .loading span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .loading span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes bounce {
+        from {
+          transform: translateY(0);
+          opacity: 0.5;
+        }
+
+        to {
+          transform: translateY(-10px);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .sidebar {
+          display: none;
+        }
+
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        .card {
+          width: 280px;
+        }
+
+        .content h1 {
+          font-size: 22px;
+        }
+      }
+    </style>
+  </body>
+</html>
