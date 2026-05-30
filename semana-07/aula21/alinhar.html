@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #palco {
+        width: 800px;
+        height: 500px;
+        background-color: gray;
+      }
+      #usuario {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        background-color: rgb(44, 113, 129);
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">START</button>
+    <main id="palco">
+      <section id="usuario"></section>
+    </main>
+    <script>
+      const btn = document.getElementById("btn");
+
+      let tempAtual = null;
+
+      btn.onclick = () => {
+        navigator.geolocation.getCurrentPosition((position) => {
+          let lat = position.coords.latitude;
+          let lng = position.coords.longitude;
+          fetch(
+            "https://api.open-meteo.com/v1/forecast?latitude=" +
+              lat +
+              "&longitude=" +
+              lng +
+              "&current=temperature_2m",
+          )
+            .then((e) => e.json())
+            .then((resultado) => {
+              tempAtual = resultado.current.temperature_2m;
+            });
+        });
+      };
+
+      let posicaoX = 0;
+      let posicaoY = 0;
+
+      let largura = 800;
+      let altura = 500;
+
+      const usuario = document.getElementById("usuario");
+      const palco = document.getElementById("palco");
+
+      let direcoesValidas = ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"];
+      let directions = [];
+      let velocidade = 10;
+
+      let funcoes = {
+        ArrowDown: () => {
+          if (posicaoY >= altura - 50) {
+            return;
+          }
+          posicaoY += velocidade;
+          usuario.style.top = posicaoY + "px";
+        },
+        ArrowUp: () => {
+          if (posicaoY <= 0) {
+            return;
+          }
+          posicaoY -= velocidade;
+          usuario.style.top = posicaoY + "px";
+        },
+        ArrowLeft: () => {
+          if (posicaoX <= 0) {
+            return;
+          }
+          posicaoX -= velocidade;
+          usuario.style.left = posicaoX + "px";
+        },
+        ArrowRight: () => {
+          if (posicaoX >= largura - 50) {
+            return;
+          }
+          posicaoX += velocidade;
+          usuario.style.left = posicaoX + "px";
+        },
+      };
+
+      setInterval(() => {
+        if (tempAtual != null && tempAtual < 16) {
+          velocidade = 5;
+          palco.style.background = "navy";
+        } else if (tempAtual != null) {
+          velocidade = 15;
+          palco.style.background = "orange";
+        }
+
+        if (directions.length > 0) {
+          // console.log(directions)
+          for (let direcao of directions) {
+            funcoes[direcao]();
+          }
+        }
+      }, 1000 / 30);
+
+      window.addEventListener("keyup", (parametro) => {
+        directions = directions.filter((item) => {
+          item != parametro.key;
+        });
+      });
+
+      window.addEventListener("keydown", (parametro) => {
+        let estaIncluso = direcoesValidas.includes(parametro.key);
+        let existeNoArray = directions.includes(parametro.key);
+        if (estaIncluso && !existeNoArray) {
+          directions.push(parametro.key);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -158,18 +158,7 @@ a:hover {
   display: grid;
   grid-template-columns: 2fr 1fr;
 }
-.grande {
-  height: 200px;
-  width: 600px;
-}
-.medio {
-  height: 200px;
-  width: 600px;
-}
-.pequeno {
-  height: 420px;
-  width: 250px;
-}
+
 .dashboard-1 {
   width: 640px;
   height: 100vh;
