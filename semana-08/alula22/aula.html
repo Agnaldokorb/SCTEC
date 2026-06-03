@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="input1">
+
+    <ul>
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+    </ul>
+    <script>
+
+        let items = document.getElementsByClassName("item")
+            for(let item of items){
+                let valor = Number(item.textContent)
+                item.textContent = valor * 2
+            }
+
+
+
+        let input1 = document.getElementById("input1")
+        input1.value = "Olá Mundo"
+
+        input1.style.backgroundColor = 'yellow'
+
+        // document.body.innerHTML= "<div style='background:blue; width:100px; height:100px'></div>"
+
+        // let div = document.createElement("div")
+        // div.style.backgroundColor = 'green'
+        // div.style.width = '100px'
+        // div.style.height = '100px'
+        // div.style.marginTop = '10px'
+
+    </script>
+</body>
+</html>

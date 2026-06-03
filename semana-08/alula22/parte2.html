@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>fabrique elementos</h1>
+    <section id="fase1">
+        <b>qual elemento</b><input id="tag">
+        <button id="criar">criar</button>
+    </section>
+    <section  id="fase2" style="display: none;">
+        <b>add propriedade</b><input id="propInput"> <br>
+        <b>add valor da propriedade</b><input id="propValue">
+        <button id="propBtn">aplicar</button> <br>
+        <b>add estilos</b><input id="styleInput"> <br>
+        <b>add valor do estilos</b><input  id="styleValue">
+        <button id="styleBtn">aplicar</button> <br>
+        <b>add conteudo</b><input id="conteudo">
+        <button id="conteudoBtn">aplicar</button>
+        <hr>
+        <button id="finalizar">finalizar</button>
+    </section>
+    <main id="palco">
+    </main>
+    <script>
+
+        let palco = document.querySelector("#palco")
+        let fase1 = document.querySelector("#fase1")
+        let fase2 = document.querySelector("#fase2")
+        let criar = document.querySelector("#criar")
+        let finalizar = document.querySelector("#finalizar")
+        let tag = document.querySelector("#tag")
+
+        let propInput = document.querySelector("#propInput")
+        let propValue = document.querySelector("#propValue")
+        let propBtn = document.querySelector("#propBtn")
+
+        let styleInput = document.querySelector("#styleInput")
+        let styleValue = document.querySelector("#styleValue")
+        let styleBtn = document.querySelector("#styleBtn")
+
+        let conteudo = document.querySelector("#conteudo")
+        let conteudoBtn = document.querySelector("#conteudoBtn")
+ 
+        let elementoAtual;
+
+        function mostraPropriedades(){
+            fase1.style.display = "none"
+            fase2.style.display = "block"
+        }
+        function escondePropriedades(){
+            fase2.style.display = "none"
+            fase1.style.display = "block"
+        }
+        criar.onclick = ()=>{
+            if(tag.value.length < 1){
+                alert("digite algo")
+                return
+            }
+            try{
+                elementoAtual = document.createElement(tag.value)
+                palco.append(elementoAtual)
+            }catch{
+                alert("digite uma tag valida do HTML")
+                return
+            }
+            mostraPropriedades()
+        }
+   
+
+        propBtn.onclick = ()=> {
+            let propriedade = propInput.value
+            let valor = propValue.value
+            elementoAtual[propriedade] = valor
+        }
+        styleBtn.onclick = ()=> {
+            let propriedade = styleInput.value
+            let valor = styleValue.value
+            elementoAtual.style[propriedade] = valor
+        }
+        conteudoBtn.onclick = ()=> {
+            let valor = conteudo.value
+            elementoAtual.textContent = valor
+        }
+
+        finalizar.onclick = ()=>{
+            elementoAtual = null
+            escondePropriedades()
+        }
+    </script>
+</body>
+</html>
