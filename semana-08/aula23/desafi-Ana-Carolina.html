@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloquinhos Coloridos</title>
+</head>
+<body>
+    <div id="palco" style="width:80vh; height:80vh; background-color: rgb(202, 199, 199); margin: 30px;">   
+    </div>
+
+    <script>
+        const palco = document.getElementById("palco");
+        function criaElemento(size, color) {
+            const x = event.clientX;
+            const y = event.clientY;
+            let bloco = document.createElement("div");
+            bloco.style.position = "absolute";
+            bloco.style.left = x - size/2 + "px";
+            bloco.style.top = y - size/2 + "px";
+            bloco.style.width = size + "px";
+            bloco.style.height = size + "px";
+            bloco.style.backgroundColor = color;
+            bloco.style.display = "block";
+            return bloco;
+        }
+        function corAleatoria() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+        palco.onclick = (event) => {
+            const size = Math.random() * 100;
+            const cor = corAleatoria();
+            const novoBloco = criaElemento(size, cor);
+            palco.appendChild(novoBloco);
+        }        
+        bloco.onclick = () => {
+            bloco.style.display = "none";
+        }       
+    </script>
+</body>
+</html>

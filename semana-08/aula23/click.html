@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #acompanho{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: orangered;
+            border-radius: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="acompanho"></div>
+     <script>
+        
+        function criaElemento(cor){
+            let div = document.createElement("div")
+            div.style.width = '50px'
+            div.style.height = '50px'
+            div.style.position = 'absolute'
+            div.style.background = cor
+            div.style.marginLeft = (event.pageX - 25) + "px"
+            div.style.marginTop = (event.pageY - 25) + "px"
+            document.body.append(div)
+        }
+        
+        document.onclick = (event)=>{
+           criaElemento("blue")
+        }
+        document.ondblclick = (event)=>{
+           criaElemento("yellow")
+        }
+        document.oncontextmenu = (event)=>{
+           criaElemento("red")
+           event.preventDefault()
+        }
+
+        let acompanho = document.querySelector("#acompanho")
+
+        document.onmousemove = (event)=>{
+            acompanho.style.marginLeft = (event.pageX + 25) + "px"
+            acompanho.style.marginTop = (event.pageY + 25) + "px"
+        }
+     </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        }
+        #circulo{
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: indianred;
+        }
+    </style>
+</head>
+<body>
+    <div id="circulo"></div>
+    <script>
+        let largura = 300
+        let altura = 300
+        let circulo = document.querySelector("#circulo")
+        let velocidade = 1
+        setInterval(()=>{
+            largura+= velocidade
+            altura+= velocidade
+            
+            circulo.style.width = largura + "px"
+            circulo.style.height = altura + "px"
+        },1000 /30)
+
+        circulo.onclick = ()=>{
+            velocidade += 1
+            largura-= 30
+            altura-= 30
+            circulo.style.width = largura + "px"
+            circulo.style.height = altura + "px"
+        }
+
+    </script>
+</body>
+</html>
