@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // fetch("https://jsonplaceholder.typicode.com/users")
+        //     .then(response => response.json())
+        //     .then(data => console.log(data))
+        //     .catch(error => console.error("Erro:", error));
+
+        async function start() {
+            // let result = await fetch("https://jsonplaceholder.typicode.com/users");
+            // let data = await result.json();
+            // console.log(data);
+
+            let init = 1;
+            for (let i = 0; i < 3; i++) {
+                let result = await fetch(`https://jsonplaceholder.typicode.com/users/${init}`);
+                let data = await result.json();
+                console.log(data);
+                init++;
+            }
+        }
+
+        start();
+    </script>
+</body>
+</html>

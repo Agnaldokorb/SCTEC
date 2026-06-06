@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+      }
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <input type="password" id="senha" placeholder="Digite sua senha" />
+    <!-- buton para mostrar a senha -->
+    <button onclick="toggleSenha()">👁️ Ver senha</button>
+    <!-- como ter um botao para disparar ma funcao quando clicar -->
+    <button id="btn">validar</button>
+
+    <script>
+      // se comecamos a variavel como falso
+      // precisamos gaurdar se todas as regras sao verdadeira e ai sim passar pra verdade
+
+      // se comecamos a variavel como verdadeiro, basta um if ser falso e ja sabemos que
+      // e invalido
+
+      // minimo 8 caracteres
+      // minimo uma letra
+      // minimo um numero
+      // minimo um simbolo
+      // simbolo nao pode ser o ultimo caracter
+      // primeiro caracter nao pode ser numerico
+      // se todas forem atendidas cor do fundo fica verde
+      //      senão fica vermelho
+
+      let btn = document.getElementById("btn");
+
+      // 1 - obter senha do usuario e coloca-la em uma variavel
+      //busca: como colocar um elemento html numa variavel
+
+      let input = document.getElementById("senha");
+
+      function toggleSenha() {
+        const input = document.getElementById("senha");
+
+        if (input.type === "password") {
+          input.type = "text"; // Revela a senha
+        } else {
+          input.type = "password"; // Oculta a senha
+        }
+      }
+
+      btn.onclick = () => {
+        let senha = input.value;
+        let resultado = true;
+
+        let temLetra = false;
+        let temNumero = false;
+        let temSimbolo = false;
+
+        // minimo 8 caracteres
+        if (senha.length < 8) {
+          resultado = false;
+        }
+        // percorre todos os caracteres
+        for (let i = 0; i < senha.length; i++) {
+          let caractere = senha[i];
+
+          if (
+            (caractere >= "a" && caractere <= "z") ||
+            (caractere >= "A" && caractere <= "Z")
+          ) {
+            temLetra = true;
+          } else if (caractere >= "0" && caractere <= "9") {
+            temNumero = true;
+          } else {
+            temSimbolo = true;
+          }
+        }
+        // minimo uma letra
+        if (!temLetra) {
+          resultado = false;
+        }
+        // minimo um numero
+        if (!temNumero) {
+          resultado = false;
+        }
+        // minimo um simbolo
+        if (!temSimbolo) {
+          resultado = false;
+        }
+
+        // simbolo nao pode ser o ultimo caracter
+        let ultimo = senha[senha.length - 1];
+
+        if (
+          (ultimo >= "a" && ultimo <= "z") ||
+          (ultimo >= "A" && ultimo <= "Z") ||
+          (ultimo >= "0" && ultimo <= "9")
+        ) {
+          // tudo bem
+        } else {
+          resultado = false;
+        }
+
+        // primeiro caracter nao pode ser numerico
+        let primeiro = senha[0];
+
+        if (primeiro >= "0" && primeiro <= "9") {
+          resultado = false;
+        }
+
+        //Resultado final
+        if (resultado) {
+          document.body.style.backgroundColor = "green";
+        } else {
+          document.body.style.backgroundColor = "red";
+        }
+      };
+
+      //busca: obter valor que o usuario digitou no html com js
+
+      // 2 - aplicar as minhas regras
+      // 3 - obter fundo da pagina em variavel
+      // 4 - mudar a cor baseado na logica
+    </script>
+  </body>
+</html>
