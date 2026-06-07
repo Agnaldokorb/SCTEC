@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Agnaldo Korb</title>
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/key-frames.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+  </head>
+  <body>
+    <div id="interactive-bg" aria-hidden="true">
+      <div class="cursor-glow"></div>
+      <div class="noise-layer"></div>
+      <div class="orb orb-a"></div>
+      <div class="orb orb-b"></div>
+    </div>
+
+    <header>
+      <nav>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="main-menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul id="main-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#projects">Projetos</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+      </nav>
+      <section id="home" class="hero">
+        <div class="content glass">
+          <img
+            class="github-avatar"
+            src="https://github.com/Agnaldokorb.png?size=260"
+            alt="Foto de perfil de Agnaldo Korb"
+          />
+          <h1>Olá, eu sou o Agnaldo Korb</h1>
+          <p>Desenvolvedor Front-end</p>
+          <span class="tip">HTML, CSS, JavaScript</span>
+        </div>
+      </section>
+    </header>
+    <main id="projects" class="page-projects">
+      <section id="cards"></section>
+
+      <section class="section-projects-list">
+        <ul id="listas"></ul>
+      </section>
+    </main>
+
+    <section id="contact" class="contact-wrap">
+      <div class="contact-card glass">
+        <h2>Contato</h2>
+        <p>
+          Quer conversar sobre projeto, vaga ou parceria? Me envie uma mensagem.
+        </p>
+
+        <form id="contact-form" class="contact-form">
+          <label for="nome">Nome</label>
+          <input
+            id="nome"
+            name="nome"
+            type="text"
+            placeholder="Seu nome"
+            required
+          />
+
+          <label for="email">E-mail</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="seuemail@exemplo.com"
+            required
+          />
+
+          <label for="mensagem">Mensagem</label>
+          <textarea
+            id="mensagem"
+            name="mensagem"
+            rows="5"
+            placeholder="Escreva sua mensagem aqui"
+            required
+          ></textarea>
+
+          <button type="submit">Enviar Mensagem</button>
+        </form>
+
+        <p
+          id="contact-feedback"
+          class="contact-feedback"
+          aria-live="polite"
+        ></p>
+      </div>
+    </section>
+
+    <footer id="pe">
+      <span class="footer-copy">
+        &copy; <span id="ano"></span> - Todos os direitos reservados
+      </span>
+      <span class="footer-separator" aria-hidden="true">|</span>
+      <span class="footer-credit">Desenvolvido por Agnaldo Korb.</span>
+    </footer>
+    <script src="js/home.js" type="module"></script>
+    <script src="js/menu.js" type="module"></script>
+    <script src="js/api.js" type="module"></script>
+    <script src="js/contact.js" type="module"></script>
+  </body>
+</html>

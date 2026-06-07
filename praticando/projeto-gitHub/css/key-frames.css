@@ -1,0 +1,30 @@
+@keyframes driftA {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(70px, 50px, 0);
+  }
+}
+
+@keyframes driftB {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-80px, -60px, 0);
+  }
+}
+
+@keyframes ringExpand {
+  from {
+    width: 20px;
+    height: 20px;
+    opacity: 0.85;
+  }
+  to {
+    width: 340px;
+    height: 340px;
+    opacity: 0;
+  }
+}
