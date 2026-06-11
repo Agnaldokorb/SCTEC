@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="color"] {
+            margin-top: 10px;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <form action="formulario.html">  
+        <p>ESCOLHA A COR</p>
+        <input type="color" name="color"> 
+        <input type="submit">
+
+        <script>
+            const form = document.querySelector('form');
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const colorInput = form.querySelector('input[type="color"]');
+                const selectedColor = colorInput.value;
+                document.body.style.backgroundColor = selectedColor;
+
+            });
+        </script>
+    </form>
+</body>
+</html>

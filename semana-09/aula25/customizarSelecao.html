@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=CT4Y0OD2RUXHnTTtE-maikkMRh4fKDqAubTEE59-g07yCzNtPqf9_goHjCbZNjQk2wJMdSAYSbnWm3vgMZw8u7L4uEAjjZkATMsH4QcyueH3pZLprwI53J7ah7QJHGMuuJJZ0waaNhoWXx-9mxrFosO3TZKicijLAseOOc9A7aDxO91cm1MzAF6z_bEhUTZVBk4NRsoWENpffHN4OYYtvNGBXd6Fhsf8Jn1_9Jnlp06UXaGIbx_cc_9yw_OnzP-6mXnvh5NRAhWpLvLupv1h8I_2W31qStv4OG05apxNFFs" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jZG4uZGlzY29yZGFwcC5jb20vYXR0YWNobWVudHMvMTM3NDQ3MTkzMjAwMjQzNTIwNS8xNTE0Mzk3MDU4MjcyOTg1MTU4L2N1c3RvbWl6YXJTZWxlY2FvLmh0bWw_ZXg9NmEyYmUwNmEmaXM9NmEyYThlZWEmaG09MTIwYzVmNmY3MWI3NjU3YTUzNDZhYjg5ODFkNWU5OTNjMDA0NTc2ODAwMjEzYzc3YzgyMzliMTkyNTMwZWZmNiY"/><style>
+        #avatar-placeholder {
+           width: 100px;
+           height: 100px;
+           border-radius: 25%;
+           border: 3px dashed black;
+           background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png');
+           background-size: cover;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="" method="GET">
+
+        <label for="arquivo">
+            <div id="avatar-placeholder"></div>
+        </label>
+        <input hidden type="file" id="arquivo" name="arquivo">
+        <button id="resetaImagem" hidden>escolher nova</button>
+        <!-- <input type="text" placeholder="digite o seu nome"> -->
+
+        <button type="submit">!!!!salvar</button>
+    </form>
+    <script>
+        let defaultImage = "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png";
+
+        let arquivo = document.querySelector("#arquivo")
+        let placeHolder = document.querySelector("#avatar-placeholder")
+        let resetaImagem = document.querySelector("#resetaImagem")
+
+        arquivo.onchange = (e)=>{
+            let arquivoEscolhido = e.target.files[0]
+            let caminho = URL.createObjectURL(arquivoEscolhido)
+            placeHolder.style.backgroundImage = "url('"+caminho+"')"
+            resetaImagem.style.display = "block"
+        }
+        resetaImagem.onclick = ()=>{
+            arquivo.value = null
+            placeHolder.style.backgroundImage = "url('"+defaultImage+"')"
+            resetaImagem.style.display = "none"
+        
+        }
+    </script>
+</body>
+</html>

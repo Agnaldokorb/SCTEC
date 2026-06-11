@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=3YqG_q5yNT3TOYiW_o2u_a3po9pTpyKEoO8VTiMAY8I9T-PzJDOozLQwyoNnJjI8E2N-aPW_xHdlLS8SmJOrQhu7rWoC5r9SKGEY-xuOswAiM_xLL9_7hnBV-Ux-RXtimEZfHwAsXnqP4qduSG06dwc_qXvdQYd6ymisMUFdgkJmzaWFC3KJs0N4Vs3Gb8AiVq8ww4wZuQPh5G7HySRPVOpoP9l5Qd9-Jy4EPPdPts5wnGIH0JLHEEbifiU0bLBl9yXwrKjApaOE8wbbjOWcKQ" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jZG4uZGlzY29yZGFwcC5jb20vYXR0YWNobWVudHMvMTM3NDQ3MTkzMjAwMjQzNTIwNS8xNTE0NDMwNDE2NTA4MDI3MDcwL2Zvcm0uaHRtbD9leD02YTJiNTZiYyZpcz02YTJhMDUzYyZobT1jMWJkN2ZmMTI4OTI1NmNlN2ZhYzI4MDUxYTg2MjE4ZjcxYmEwNTQ0ZjI4NzZjNmVlOWE3ZGNmYzZkNWJjOTE5Jg"/></head>
+<body>
+
+    <form method="GET" action="" id="form">
+        <b>telefone</b>
+        <input type="tel" name="telefone"  required id="telefone">
+        <b>escolha a cor de fundo da pagina</b>
+        <input type="color" name="color" id="i">
+        <input type="submit" value="vaiii">
+    </form>
+
+    <script>
+        let search = new URLSearchParams(window.location.search)
+        document.body.style.backgroundColor = search.get("color")
+        let currentNumber = search.get("telefone")
+
+        let input = document.querySelector("#i")
+        input.value = search.get("color")
+        
+        let form = document.querySelector("#form")
+        let telefone = document.querySelector("#telefone")
+        
+        telefone.value = currentNumber
+
+        
+        
+        form.onsubmit = (event)=>{
+            event.preventDefault()
+            if(!telefone.value.startsWith("+55")){
+                event.target[0].value = "+55" + telefone.value 
+                // telefone.value = "+55" + telefone.value 
+            }
+            form.submit()
+        }
+
+
+    </script>
+</body>
+</html>

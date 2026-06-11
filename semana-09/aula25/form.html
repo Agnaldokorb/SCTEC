@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=5iozpzvPoLrdKV2xaJkSYFIO7FxN3rnvBQj8aceSXAeSgjyFmT8NCGXdtakcPxYRnABRkbtXrTMcHdbpHAFHagpjHc_ByQzYEflxbPWNopq5g7UBd-BH8Q5I5ayDUB_9kVG8cDFQ7K85-p1dwdFQCmE1WLqa-fjGpNXasNveOOEdo_53a5Nn6wfpbCmdy9V8b1ixKXqwPTmSutzIktx0SRw9UiqeMfyrIgwfGlKT9GG-XYwjlQjZ1tK-lfYHSxss0baiJEmUBm-RQUXsligSig" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jZG4uZGlzY29yZGFwcC5jb20vYXR0YWNobWVudHMvMTM3NDQ3MTkzMjAwMjQzNTIwNS8xNTE0Mzk3MDU4NjI1NDQxOTU0L2Zvcm0uaHRtbD9leD02YTJiZTA2YSZpcz02YTJhOGVlYSZobT0xOGU1NWMyNzc0YTVmMDFlMjcxYmZhMTEwZDhlMTdhMmYyYTE4NzE0MzYxNGQzODg2YzMzODlhMzA5ZmEzNWU3Jg"/></head>
+<body>
+
+    <form method="GET" action="">
+        <b>escolha a cor de fundo da pagina</b>
+        <input type="color" name="color" id="i">
+        <input type="submit">
+    </form>
+
+    <script>
+        let search = new URLSearchParams(window.location.search)
+        document.body.style.backgroundColor = search.get("color")
+
+        let input = document.querySelector("#i")
+        input.value = search.get("color")
+    </script>
+</body>
+</html>
