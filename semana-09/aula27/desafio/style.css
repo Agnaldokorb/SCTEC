@@ -1,0 +1,183 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f2f4f8;
+  color: #1f2937;
+}
+
+.container {
+  width: min(980px, 92%);
+  margin: 36px auto;
+}
+
+h1 {
+  margin: 0 0 8px;
+  color: #44a323;
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+}
+
+.description {
+  margin: 0 0 24px;
+  font-size: 1rem;
+}
+
+.panel {
+  background: #ffffff;
+  border: 2px solid #d5dbe3;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.type-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  border: 1px solid #c6ced9;
+  background: #f8fafc;
+  color: #334155;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: #7ea6d1;
+}
+
+.filter-btn.active {
+  background: #cfe8ff;
+  border-color: #4c8dce;
+  color: #0f3b69;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.search-box input {
+  width: min(320px, 62vw);
+  padding: 8px 10px;
+  border: 1px solid #c6ced9;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.status {
+  margin: 6px 0 12px;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.card {
+  border: 1px solid #d4dbe4;
+  border-radius: 12px;
+  background: #f8fafc;
+  padding: 12px;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.card p {
+  margin: 5px 0;
+  font-size: 0.88rem;
+}
+
+.type-tag {
+  align-self: flex-start;
+  background: #d8f3ef;
+  color: #115e59;
+  border: 1px solid #9fddd4;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  padding: 3px 9px;
+}
+
+.positive {
+  color: #0a7f35;
+  font-weight: 700;
+}
+
+.negative {
+  color: #c81e1e;
+  font-weight: 700;
+}
+
+.load-more {
+  display: block;
+  margin: 14px auto 0;
+  border: none;
+  background: #44a323;
+  color: #ffffff;
+  font-size: 0.95rem;
+  padding: 9px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.load-more[disabled] {
+  background: #a7b5c7;
+  cursor: not-allowed;
+}
+.asset-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 860px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+}

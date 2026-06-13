@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input" placeholder="Digite algo...">
+    <span id="validaInput"></span>
+    <button id="validar">Validar</button>
+
+    <script>
+        let input = document.querySelector('#input');
+        let validar = document.querySelector('#validar');
+        let validaInput = document.querySelector('#validaInput');
+
+        validar.onclick = () => {
+            let valorAtual = input.value;
+            if (valorAtual.length < 5) {
+                validaInput.textContent = 'O valor deve conter pelo menos 5 caracteres.';
+                validaInput.style.color = 'red';
+            } else {
+                validaInput.textContent = 'Valor válido!';
+                validaInput.style.color = 'green';
+            }
+        }
+    </script>
+</body>
+</html>

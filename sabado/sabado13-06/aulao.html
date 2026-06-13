@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+      } */
+      .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        gap: 10px;
+        background-color: rgb(241, 234, 234);
+      }
+      #container-card {
+        display: flex;
+        justify-content: center;
+        max-width: 100%;
+        max-height: 100%;
+        background-color: rgb(241, 234, 234);
+        border-radius: 10px;
+        padding: 10px;
+      }
+      #conteudo {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
+        gap: 12px;
+        width: min(100%, 900px);
+      }
+      .card {
+        width: auto;
+        min-height: 100px;
+        border: 1px solid rgb(223, 18, 18);
+        border-radius: 10px;
+        margin: 0;
+        padding: 10px;
+      }
+      @media (max-width: 900px) {
+        #conteudo {
+          grid-template-columns: repeat(2, minmax(220px, 1fr));
+        }
+      }
+      @media (max-width: 620px) {
+        #conteudo {
+          grid-template-columns: 1fr;
+        }
+      }
+      .card p {
+        margin: 5px 0;
+        font-size: 15px;
+      }
+      .card h2 {
+        margin: 5px 0;
+        font-size: 25px;
+        color: rgb(77, 30, 30);
+      }
+      .card a {
+        margin: 5px 0;
+        font-size: 15px;
+        text-decoration: none;
+        color: rgb(43, 10, 160);
+      }
+      .card a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <label for="geral">Pesquise por palavra chave</label>
+      <input type="text" id="geral" />
+    </header>
+    <main id="container-card">
+      <div id="conteudo"></div>
+    </main>
+
+    <script>
+      let conteudo = document.getElementById("conteudo");
+      let geral = document.getElementById("geral");
+      // let conteudo = document.querySelector("#conteudo")
+      let listaOriginal = [];
+
+      function recarregaLista(lista) {
+        let html = "";
+        for (let item of lista) {
+          let name = item.name;
+          let url = item.website_url;
+          let city = item.city;
+          html +=`
+            <div class="card">
+              <h2>${name}</h2>
+              <p>City: <strong>${city}</strong></p>
+              <a href="${url}">pagina da cervejaria</a>
+            </div>
+          `;
+        }
+        conteudo.innerHTML = html;
+      }
+
+      fetch("https://api.openbrewerydb.org/v1/breweries")
+        .then((result) => {
+          return result.json();
+        })
+        .then((data) => {
+          listaOriginal = data;
+          recarregaLista(data);
+        });
+
+      geral.onkeyup = () => {
+        let textoDigitado = geral.value;
+        let deveAparecer = listaOriginal.filter((item) => {
+          // alternativa em que nao precisa saber o nome das chaves
+          let isValid = false;
+
+          for (let key in item) {
+            if (item[key] != null) {
+              isValid = String(item[key])
+                .toLowerCase()
+                .includes(textoDigitado.toLowerCase());
+              if (isValid) {
+                break;
+              }
+            }
+          }
+          return isValid;
+
+          //pesquisar apenas pelo name
+          // return item.name.includes(textoDigitado)
+        });
+        recarregaLista(deveAparecer);
+      };
+    </script>
+  </body>
+</html>

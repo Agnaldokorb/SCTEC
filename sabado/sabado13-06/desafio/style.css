@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-color: rgb(240, 240, 240);
+  padding: 20px;
+  margin: 0;
+}
+header {
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: rgb(200, 200, 200);
+  padding: 10px;
+  border-radius: 15px;
+}
+.pesquisar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+.pesquisar input {
+  padding: 10px;
+  width: min(100%, 420px);
+  border: none;
+  border-radius: 15px;
+}
+#conteudo {
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+}
+.card {
+  background-color: rgb(220, 220, 220);
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; 
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+.card p {
+  margin: 5px 0;
+  font-size: 15px;
+}
+.card h2 {
+  margin: 5px 0;
+  font-size: 25px;
+  color: rgb(77, 30, 30);
+}
+.card a {
+    text-decoration: none;
+    font-size: 15px;
+    color: blue;
+}
+.card a:hover {
+    text-decoration: underline;
+    font-weight: bold;;
+    cursor: pointer;
+}
+#cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 16px;
+  width: min(100%, 1100px);
+  margin: 0 auto;
+}
+@media (max-width: 900px) {
+  #cards {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+@media (max-width: 620px) {
+  body {
+    padding: 12px;
+  }
+  #conteudo {
+    padding: 12px;
+  }
+  #cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=oPOd_zYhQ1tEo7JrlZ4eHc4PQ6BUqHA9BFyI1YrfnRKJeG2GUfihTulwy0FOw-RAls59-niD4geBfs_H3R16arIewwq9Vp4U4Ng5Aix7njKo25iQpjWbpZHatHC-M1XMYZc7D0vim3qziNDZozO3vL0giF22g_Jz8HaKq0rPtf--kCgxN2fOowZUSxsrCj-e9EvU94f8EgWdzjowjWwUoPshi7wbpsoov_W61qEQrSpHLTueYKMeWPM-_i71eKEKFtrpLu6hnM5fUpL7bNt93g" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jZG4uZGlzY29yZGFwcC5jb20vYXR0YWNobWVudHMvMTM3NDQ3MTkzMjAwMjQzNTIwNS8xNTE1MTUxNjIzMjI2MjYxNjM0L2luZGV4Lmh0bWw_ZXg9NmEyZGY2NjkmaXM9NmEyY2E0ZTkmaG09M2JiOTcwOGRkZDgxMWYwY2ZjY2VhNDk1NTc1MDVkZjc5ZTU3MDNjNTExMjlkMDViOTAwOGVlMGI4YmVhNjc4NyY"/><style>
+        .div{
+            float:left;
+            border-radius:25px;
+            border:3px solid black;
+            width:27%; 
+            height:150px; 
+            margin: 20px;
+            padding: 20px;
+        }
+        footer{
+            padding-bottom: 100px;
+        }
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 2px solid #FFF;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+            }
+            .loader::after,
+            .loader::before {
+            content: '';  
+            box-sizing: border-box;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #FF3D00;
+            width: 6px;
+            height: 6px;
+            transform: translate(150%, 150%);
+            border-radius: 50%;
+            }
+            .loader::before {
+            left: auto;
+            top: auto;
+            right: 0;
+            bottom: 0;
+            transform: translate(-150%, -150%);
+            }
+
+            @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+            } 
+    </style>
+</head>
+<body>
+    <h1>Ativos de investimentos brasileiros</h1>
+    <header id="filtros">
+
+
+    </header>
+    <main id="conteudo">
+        <span class="loader"></span>
+    </main> 
+    <footer style="text-align: center;">
+        <button hidden id="verMais">VER MAIS</button>
+    </footer>
+    <script>
+        
+        let conteudo = document.querySelector("#conteudo")
+        let verMais = document.querySelector("#verMais")
+        let filtros = document.querySelector("#filtros")
+        
+        let carregou = false
+        let dados = []
+        let dadosVisiveis = []
+        let tipos = []
+
+
+        function adicionaFiltros(tipos){
+            for(tipo of tipos){
+                let button = document.createElement("button")
+                button.textContent = tipo
+                
+                button.onclick = ()=>{
+                    mostraOuEscondeApenas(tipo)
+                }
+
+                filtros.append(button)
+            }
+
+        }
+
+        function mostraOuEscondeApenas(tipo){
+            // se o atual nao esta ativo
+            // (visualmente) verificar se outro tipo esta ativo e ent'ao desativar
+            // (visualmente) ativar (adicionar uma cor de fundo) o atual
+            // filtrar lista de dadosVisiveis e recriar todo o html visivel
+            // com a lista filtrada pelo tipo que chegou por parametro aqui
+            
+            // se o atual esta ativo
+            // (visualmente) desativa
+            // reconstroi a lista a partir dos dados originais
+        }
+        function adicionaCards(cards){
+            stringDos6Cards = ""
+            for(let card of cards){
+                stringDos6Cards += "<div class='div'>"
+                stringDos6Cards += "<img style='width:50px' src='"+card.logo+"'>"
+                stringDos6Cards += "<p>"+card.name+"</p>"
+                stringDos6Cards += "<p>"+card.type+"</p>"
+                stringDos6Cards += "</div>"
+            }
+            conteudo.innerHTML += stringDos6Cards
+        }
+
+        fetch("https://brapi.dev/api/quote/list")
+        .then((r) => r.json())
+        .then((data)=>{
+            // limpa carregando pois dados chegaram
+            conteudo.textContent = ""
+            //modifica variavel que garante que os dados estao disponiveis para true
+            carregou = true
+            
+            // salva os 2 dados que queremos para estar disponivel fora daqui, em qualquer lugar
+            // pois as variaveis foram declaradas fora de qualquer {}
+            dados = data.stocks
+            tipos = data.availableStockTypes
+
+            // mostra o botao de ver mais
+            verMais.style.display = "inline-block"
+            
+            // remove da lista os 6 primeiros e os adiciona na pagina
+            let seisPrimeiros = dados.splice(0,6)
+            
+            dadosVisiveis = seisPrimeiros
+
+            adicionaCards(seisPrimeiros);
+
+            // mostrar botoes que permitem filtro
+            adicionaFiltros(tipos)
+        })
+    
+        verMais.onclick = ()=>{
+            let proximosSeis = dados.splice(0,6)
+            dadosVisiveis = [...dadosVisiveis, ...proximosSeis]
+            adicionaCards(proximosSeis);
+        }
+
+    </script>
+</body>
+</html>

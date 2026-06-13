@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafio Ativos Brasileiros</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Ativos de investimentos brasileiros</h1>
+
+      <p class="description">
+        Lista de ativos carregada da API da brapi. Mostra 6 por vez, com filtro
+        por tipo e busca em texto livre.
+      </p>
+
+      <section class="panel" aria-label="Listagem de ativos">
+        <div class="controls">
+          <div class="type-filters" id="type-filters"></div>
+          <label class="search-box" for="search-input">
+            <span>Buscar</span>
+            <input
+              id="search-input"
+              type="text"
+              placeholder="busca livre por texto"
+            />
+          </label>
+        </div>
+
+        <p id="status" class="status">Carregando ativos...</p>
+
+        <div id="cards" class="cards"></div>
+
+        <button id="load-more" class="load-more" type="button">ver mais</button>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
