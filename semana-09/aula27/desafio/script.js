@@ -7,8 +7,8 @@ const loadMoreButton = document.querySelector("#load-more");
 const typeFiltersElement = document.querySelector("#type-filters");
 const searchInput = document.querySelector("#search-input");
 
-let allAssets = []; 
-let filteredAssets = []; 
+let allAssets = [];
+let filteredAssets = [];
 let selectedTypes = new Set();
 let currentPage = 1;
 
@@ -158,7 +158,6 @@ function renderCards() {
 			</div>
 			<span class="type-tag">${asset.type}</span>
 		`;
-        
 
     cardsElement.appendChild(card);
   });

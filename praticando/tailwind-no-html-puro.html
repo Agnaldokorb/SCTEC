@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meu site com Tailwind</title>
+    <!-- Config opcional do Tailwind (via CDN) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              marca: "#0EA5E9",
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Script oficial do Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <!-- Componente estilizado com Tailwind -->
+    <div class="bg-white p-8 rounded-lg shadow-md text-center max-w-sm">
+      <h1 class="text-2xl font-bold text-marca mb-4 text-blue-500">Olá, Tailwind!</h1>
+      <p class="text-gray-700">
+        Usar Tailwind no HTML5 é rápido e super fácil.
+      </p>
+    </div>
+  </body>
+</html>
