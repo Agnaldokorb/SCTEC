@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafio API GitHub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Desafio API GitHub</h1>
+    </header>
+    <main>
+      <section id="search" class="search">
+        <h2>Buscar Repositórios</h2>
+        <p>
+          Digite o nome do usuário do GitHub para adicionar a lista de busca.
+        </p>
+        <p>
+          Depois click no botão "CAREGAR USUÁRIOS" ou "CARREGAR REPOSITÓRIOS".
+        </p>
+        <form id="search-form">
+          <input
+            type="text"
+            id="username"
+            placeholder="Digite o nome do usuário"
+            required
+          />
+          <button type="submit">Adicionar</button>
+        </form>
+        <div class="buttons">
+          <button id="load-users">CARREGAR USUÁRIOS</button>
+          <button id="load-repos">CARREGAR REPOSITÓRIOS</button>
+        </div>
+        <div id="pending-users" class="pending-users">
+          <strong>Usuários adicionados:</strong>
+          <span id="pending-list">Nenhum usuário.</span>
+        </div>
+      </section>
+      <section id="results"></section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
