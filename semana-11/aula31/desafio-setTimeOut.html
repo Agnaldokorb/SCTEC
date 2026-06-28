@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Círculo andando</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #f1f1f1;
+      position: relative;
+    }
+
+    .circulo {
+      width: 80px;
+      height: 80px;
+      background-color: #22c55e;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="circulo" id="circulo"></div>
+
+  <script>
+    const circulo = document.getElementById("circulo");
+
+    let posicao = 0; // Posição inicial do círculo (em pixels)
+    let direcao = 1; // Direção do movimento: 1 para a direita, -1 para a esquerda
+
+    const velocidade = 5; // Velocidade do movimento do círculo (em pixels por atualização)
+    const tempo = 20; // Intervalo de tempo entre cada atualização do movimento (em milissegundos)
+
+    function moverCirculo() {
+      const larguraTela = window.innerWidth; // pega largura da tela
+      const larguraCirculo = circulo.offsetWidth; // Largura do círculo com base no seu tamanho real
+
+      posicao += velocidade * direcao; // Atualiza a posição do círculo com base na direção e velocidade
+
+      if (posicao >= larguraTela - larguraCirculo) { // Verifica se o círculo atingiu a borda direita da tela
+        direcao = -1;
+      }
+
+      if (posicao <= 0) { // Verifica se o círculo atingiu a borda esquerda da tela
+        direcao = 1;
+      }
+
+      circulo.style.left = posicao + "px"; // Atualiza a posição do círculo na tela
+
+      setTimeout(moverCirculo, tempo); // Chama a função novamente após o tempo definido para criar o efeito de movimento contínuo
+    }
+
+    moverCirculo(); // Inicia o movimento do círculo
+  </script>
+
+</body>
+</html>
